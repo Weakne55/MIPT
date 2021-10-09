@@ -16,6 +16,7 @@ with open('C:\Labs\Data50.txt', 'r') as inf:
     I50 = [float(x) * 5 for x in inf.readline().split(" ")]
 
 
+
 # Calculation V=RI
 def mid(V, I):
     VI = []
@@ -40,14 +41,17 @@ print(R50)
 # Error
 def errors(V, I, R):
     randEr = (1 / 3) * np.sqrt(((mid(V, V)) / (mid(I, I))) - R ** 2)
+    print(randEr, "rand")
     sysEr = randEr / R
+    print(sysEr, "sys")
     fulEr = np.sqrt(sysEr ** 2 + randEr ** 2)
     return fulEr
 
 
-print(errors(V20, I20, R20))
-print(errors(V30, I30, R30))
-print(errors(V50, I50, R50))
+
+print(errors(V20, I20, R20), "full")
+print(errors(V30, I30, R30), "full")
+print(errors(V50, I50, R50), "full")
 
 
 def ErrorUP(V):
@@ -93,6 +97,15 @@ plt.plot(I30, ErrorDown(V30), '_k')
 
 plt.plot(I50, ErrorUP(V50), '_k')
 plt.plot(I50, ErrorDown(V50), '_k')
+
+def Apr(V,m,b):
+    a = []
+    for i in V:
+        a.append(i*m+b)
+    return a
+
+
+plt.plot(x,Apr(x,m,b) )
 
 plt.legend(loc='best', fontsize=12, )
 plt.show()
