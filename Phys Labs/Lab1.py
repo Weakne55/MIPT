@@ -105,7 +105,7 @@ def Apr(V,m,b):
     return a
 
 
-plt.plot(x,Apr(x,m,b) )
+#plt.plot(x,Apr(x,m,b) )
 
 plt.legend(loc='best', fontsize=12, )
 plt.show()
