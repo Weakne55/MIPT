@@ -55,6 +55,17 @@ def gmin(a, x, T):
     return g2
 
 
+def normdev(g, mn):
+    for j in range(len(g)):
+        g[j] = (g[j] - mn)**2
+    s = sum(g)
+    return np.sqrt(s/(len(g)-1))
+
+
+NormDev = normdev(g(a, r1, T), np.mean(g(a, r1, T)))
+ErrDev = NormDev/np.sqrt(len(g(a, r1, T)))
+FullDev = np.sqrt(ErrDev**2 + 0.5**2)
+print('-'*20, NormDev, ErrDev, FullDev, '-'*20, sep='\n')
 print(np.mean(g(a, r1, T)))  # среднее значение ускорения свободного падения
 print(np.mean(gmax(a, r1, T)), 'max')  # среднее max значение ускорения свободного падения
 print(np.mean(gmin(a, r1, T)), 'min')  # среднее min значение ускорения свободного падения
