@@ -10,6 +10,7 @@ for i in range(N):
 
 x0, y0 = map(float, input().split())
 
+
 def inPolygon(x, y, xp, yp):
     c = 0
     for i in range(len(xp)):
@@ -26,19 +27,7 @@ for j in range(N):
 
 if ghm == 1:
     print('YES')
-    # X.append(X[0])
-    # Y.append(Y[0])
-    # plt.figure(figsize=(12, 7))
-    # plt.plot(X, Y, 'o-r')
-    # plt.plot(x0, y0, color='orange', marker='o')
-    # plt.grid(True)
-    # plt.show()
+
 else:
     print(inPolygon(x0, y0, X, Y))
-    # X.append(X[0])
-    # Y.append(Y[0])
-    # plt.figure(figsize=(12, 7))
-    # plt.plot(X, Y, 'o-r')
-    # plt.plot(x0, y0, color='orange', marker='o')
-    # plt.grid(True)
-    # plt.show()
+

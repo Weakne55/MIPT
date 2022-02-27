@@ -11,8 +11,3 @@ if a-b != 0:
     print(round(px), round(py))
 else:
     print('NO')
-
-
-# n1x + n2y + n3 = 0
-# n2y = -n1x-n3
-# y = -n1/n2 x - n3/n2

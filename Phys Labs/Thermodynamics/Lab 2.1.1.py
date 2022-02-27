@@ -17,7 +17,7 @@ plt.scatter(dT, N, marker='.', label='Полученные значения', co
 # drawing our approximate line
 x = np.linspace(0, 10, 100)
 y = 0.2593 * x + 0.03601
-plt.plot(x, np.poly1d(np.polyfit(x, y, 1))(x), label='Апроксимационная прямая', linestyle='--', color='orange')
+ax.plot(x, np.poly1d(np.polyfit(x, y, 1))(x), label='Апроксимационная прямая', linestyle='--', color='orange')
 
 print(np.poly1d(np.polyfit(dT, N, 1)))
 

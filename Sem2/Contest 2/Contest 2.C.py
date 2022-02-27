@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 
+# решение задачи из контеста
+# ---------------------------------------------------
 x1, y1, x2, y2, x3, y3 = map(int, input().split())
 x0, y0 = map(int, input().split())
 
@@ -12,7 +14,10 @@ y5 = 2*y0 - y2
 y6 = 2*y0 - y3
 
 print(x4, y4, x5, y5, x6, y6)
+# ---------------------------------------------------
 
+
+# здесь я просто проверяю работает ли она корректно
 plt.figure(figsize=(12, 7))
 plt.plot((x1, x2, x3, x1), (y1, y2, y3, y1), 'o-r')
 plt.plot(x0, y0, color='orange', marker='o')
