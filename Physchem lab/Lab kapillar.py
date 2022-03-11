@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy import optimize
 
 
+
 def approximate_function(link=str, color_dots=None, color_curve=None, marker_dots=None):
     """"link должна иметь вид С:\home\lab\measure1.txt"""
     with open(link, 'r') as file:
@@ -29,11 +30,11 @@ def approximate_function(link=str, color_dots=None, color_curve=None, marker_dot
 
 fig, ax = plt.subplots()
 approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_1.txt', 'gray', 'blue', 'x')
-approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_2.txt', 'orange', 'green', 'o')
-approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_3.txt', 'black', 'red', '^')
+# approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_2.txt', 'orange', 'green', 'o')
+# approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_3.txt', 'black', 'red', '^')
 # approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_4.txt')
 # approximate_function('C:\Labs\Карпович Гуревич\\11.3+400_5.txt')
-# approximate_function('C:\Labs\Карпович Гуревич\\11.3-400_1.txt', 'black', 'red')
+approximate_function('C:\Labs\Карпович Гуревич\\11.3-400_1.txt', 'black', 'red')
 
 plt.grid()
 plt.show()
