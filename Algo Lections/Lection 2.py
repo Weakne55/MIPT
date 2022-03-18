@@ -15,7 +15,6 @@ def shift_up(heap: list, ind: int()):
 def pop_from_heap(heap: list):
     if len(heap) == 0:
         raise IndexError('Heap is empty. Can`t get element from it')
-
     res = heap[0]
     el = heap.pop()
     if len(heap) > 0:
