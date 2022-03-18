@@ -26,29 +26,39 @@ def pop_from_heap(heap: list):
 
 def shift_down(heap: list, ind: int, size=None):
     if size is None:
-        size = len(h) - 1
-    if 2 * ind + 1 >= len(heap):
-        return
-    m = min([heap[ind]] + heap[2 * ind + 1: 2 * ind + 3])  # он здесь дописал куда-то мин
+        size = len(heap)
+    else:
+        print(size, end=' ')
+    m = heap[ind]
+    if (2 * ind + 1 < size) and (heap[2 * ind + 1] < m):
+        m = heap[2 * ind + 1]
+    if (2 * ind + 2 < size) and (heap[2 * ind + 2] < m):
+        m = heap[2 * ind + 2]
     if heap[ind] == m:
         return
     if heap[2 * ind + 1] == m:
         heap[ind], heap[2 * ind + 1] = heap[2 * ind + 1], heap[ind]
-        shift_down(heap, 2 * ind + 1)
+        shift_down(heap, 2 * ind + 1, size)
+        return
+    heap[ind], heap[2 * ind + 2] = heap[2 * ind + 2], heap[ind]
+    shift_down(heap, 2 * ind + 2, size)
 
 
 def hipify(h: list):
     for i in range((len(h) - 2) // 2, -1, -1):
         shift_down(h, i)
 
+
 def heap_sort(h):
     hipify(h)
-    for i in range(len(h)-1):
+    print(h)
+    for i in range(1, len(h)):
         h[0], h[-i] = h[-i], h[0]
-        shift_down(h, 0, size= len(h)-i - 1)
+        shift_down(h, 0, size=len(h) - i)
 
 
 from random import randint
+
 a = [randint(100, 999) for _ in range(10)]
 print(a)
 
