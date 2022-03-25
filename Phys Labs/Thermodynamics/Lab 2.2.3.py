@@ -38,14 +38,26 @@ def fit_function(x, k, b):
 def resistance_of_thread(U_1=list, U_2=list, color=str, T=int):
     R_thread0 = list()
     Q_thread0 = list()
+    I_thread0 = list()
     for i in range(len(U_1)):
         R_thread0.append((U_2[i] * 10) / U_1[i])
         Q_thread0.append(U_2[i] * (U_1[i] / 10)*0.000001)
+        I_thread0.append(U_1[i] / 100)
+    print('Сопротивление при температуре ', T)
+    for k in range(len(R_thread0)):
+        print(R_thread0[k].__round__(2))
+    print('Тепловой поток при температуре ', T)
+    for k in range(len(Q_thread0)):
+        print(Q_thread0[k])
+    print('Ток при температуре ', T)
+    for k in range(len(I_thread0)):
+        print(I_thread0[k])
+    print('---------------------------')
     R_thread = np.array(R_thread0, dtype=np.float64)
     Q_thread = np.array(Q_thread0, dtype=np.float64)
 
     beta_opt, beta_cov = optimize.curve_fit(fit_function, Q_thread, R_thread)
-    print('при температуре', T, 'C ', beta_opt)
+    print('𝑑𝑅/𝑑Q при температуре', T, 'C ', beta_opt)  #
     label = 'Апроксимация при T = ' + T + ' С'
     plt.plot(Q_thread, fit_function(Q_thread, *beta_opt), color=color, label=label)
     plt.scatter(Q_thread0, R_thread0, marker='x', color=color)
