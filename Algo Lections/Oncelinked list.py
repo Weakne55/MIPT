@@ -1,56 +1,58 @@
 from random import randint
+# FIFO список
 
 
-def LinkedList():
+def LinkedList():  # создаем односвязный список
     return {
-        'first': None,
-        'last': None
+        'first': None,  # создаём первый элемент
+        'last': None  # создаём последний элемент
     }
 
 
 
-def Node(value):
+def Node(value):  # создаем узел
     return {
-        'value': value,
-        'next': None
+        'value': value,  # добавляем значение узла
+        'next': None  # добавляем ссылку на следующий узел
     }
 
 
-def Put(ll, data):
-    node = Node(data)
-    if ll['first'] is None:
-        ll['first'] = ll['last'] = node
-    ll['last']['next'] = node
-    ll['last'] = node
+def Put(ll, data):  # функция добавления узла справа
+    node = Node(data)  # создаём новый узел
+    if ll['first'] is None:  # если первого узла нет, то
+        ll['first'] = ll['last'] = node  # создаем новый узел, который сразу первый и последний
+    ll['last']['next'] = node  # если список не пуст, то нынешний последний ссылается на новый узел
+    ll['last'] = node  # новый созданный узел становится последним
 
 
-def Get(ll):
-    if ll['first'] is None:
-        raise IndexError('Can`t get from empty Linked list')
-    res = ll['first']['value']
-    ll['first'] = ll['first']['next']
-    return res
-
-def IsEmpty(ll):
-    return ll['first'] is None
+def Get(ll):  # получаем первый узел
+    if ll['first'] is None:  # если список пуст
+        raise IndexError('Can`t get from empty Linked list')  # вызываем ошибку
+    res = ll['first']['value']  # если не пуст, то присваиваем перменной значение первого узла
+    ll['first'] = ll['first']['next']  # и делаем второй узел первым
+    return res  # возвращаем переменную, которой присвоили значение исходного первого узла
 
 
-def printlist(ll):
-    el =ll['first']
-    while el is not None:
-        print(el['value'],end=', ')
-        el = el['next']
-    print()
+def IsEmpty(ll):  # проверка что список пуст
+    return ll['first'] is None  # возвращает True, если первого узла нет
+
+
+def printlist(ll):  # вывод списка
+    el = ll['first']  # присваиваем элементу первый узел
+    while el is not None:  # пока элемент не пуст
+        print(el['value'], end=', ')  # печатаем значение этого узла
+        el = el['next']  # присваиваем элементу значение следующего узла
+    print()  # печатаем строку, чтобы красиво было
 
 
 
-ll =LinkedList()
-for _ in range(10):
-    x = randint(100,900)
-    print(x, end=', ')
-    Put(ll,x)
+ll = LinkedList()  # создаём связный список
+for _ in range(10):  # делаем в нём 10 узлов
+    x = randint(100, 900)  # добавляем в узел рандомное значение
+    print(x, end=', ')  # печатаем это значение
+    Put(ll, x)  # добавляем в связный список узел с таким значением
 
 print()
-printlist(ll)
-while not IsEmpty(ll):
-    print(Get(ll), end=', ')
+printlist(ll)  # выводим список
+while not IsEmpty(ll):  # пока первый элемент не является пустым
+    print(Get(ll), end=', ')  # забираем оттуда элементы слева

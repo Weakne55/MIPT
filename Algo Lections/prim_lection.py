@@ -87,3 +87,5 @@ def prim(G):
 
 G = read_graph()
 print(prim(G))
+
+
