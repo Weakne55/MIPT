@@ -28,22 +28,24 @@
 # # граф через словарь
 
 
-# # создание графа через словарь
-# G = {}
-# for _ in range(M):
-#     v1, v2 = input().split()
-#     for v in (v1, v2):
-#         if v not in G:
-#             G[v] = []
-#     G[v1].append(v2)
-#     G[v2].append(v1)
-#
-# for vert in G:
-#     print(
-#         vert, ':',
-#         len(G[vert]),
-#         G[vert]
-#     )
+# создание графа через словарь
+G = {}
+for _ in range(M):
+    v1, v2 = input().split()
+    for v in (v1, v2):
+        if v not in G:
+            G[v] = []
+    G[v1].append(v2)
+    G[v2].append(v1)
+
+for vert in G:
+    print(
+        vert, ':',
+        len(G[vert]),
+        G[vert]
+    )
+
+
 def ind(name):
     return ord(name) - ord('A')
 
