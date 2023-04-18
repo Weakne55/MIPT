@@ -215,14 +215,11 @@ class Person:
 
     def __init__(self, fio, old, ps, weight):
         self.verify_fio(fio)
-        self.verify_old(old)
-        self.verify_ps(ps)
-        self.verify_weight(weight)
 
         self.__fio = fio.split()
-        self.__old = old
-        self.__ps = ps
-        self.__weight = weight
+        self.old = old
+        self.ps = ps
+        self.weight = weight
 
     @classmethod
     def verify_fio(cls, fio):
@@ -283,3 +280,86 @@ class Person:
     def weight(self, weight):
         self.verify_weight(weight)
         self.__weight = weight
+
+
+# Дескрипторы
+
+class ReadIntX:
+    def __set_name__(self, owner, name):
+        self.name = "_x"
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
+
+
+class Integer:
+    @classmethod
+    def verify_coord(cls, coord):
+        if type(coord) != int:
+            raise TypeError('Координата должна быть целым числом')
+
+    def __set_name__(self, owner, name):
+        self.name = "_" + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
+
+    def __set__(self, instance, value):
+        self.verify_coord(value)
+        setattr(instance, self.name, value)
+
+
+class Point3D:
+    x = Integer()
+    y = Integer()
+    z = Integer()
+    xr = ReadIntX()
+
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+
+# Метод __call__
+# dunder-методы (от англ.сокращения double underscope)
+
+class StripChars():
+    def __init__(self, chars):
+        self.__counter = 0
+        self.__chars = chars
+
+    def __call__(self, *args, **kwargs):
+        if not isinstance(args[0], str):
+            raise TypeError("Аргумент должен быть строкой")
+
+        return args[0].strip(self.__chars)
+
+
+s1 = StripChars("?:!.; ")
+s2 = StripChars(" ")
+res1 = s1(' Hello World! ')
+res2 = s2(" Hello World! ")
+
+
+import math
+class Derivate:
+    def __init__(self, func):
+        self.__fn = func
+
+    def __call__(self, x, dx=0.0001, *args, **kwargs):
+        return (self.__fn(x + dx) - self.__fn(x)) / dx
+
+
+@Derivate
+def df_sin(x):
+    return math.sin(x)
+
+# df_sin = Derivate(df_sin)
+# print(df_sin(math.pi/3))
+
+
+
+
+
+

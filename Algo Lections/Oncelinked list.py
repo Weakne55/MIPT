@@ -3,18 +3,12 @@ from random import randint
 
 
 def LinkedList():  # создаем односвязный список
-    return {
-        'first': None,  # создаём первый элемент
-        'last': None  # создаём последний элемент
-    }
+    return dict(first=None, last=None)
 
 
 
 def Node(value):  # создаем узел
-    return {
-        'value': value,  # добавляем значение узла
-        'next': None  # добавляем ссылку на следующий узел
-    }
+    return dict(value=value, next=None)
 
 
 def Put(ll, data):  # функция добавления узла справа
