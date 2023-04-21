@@ -86,7 +86,7 @@ class Vector:
 from accessify import private, protected
 
 
-class Point:
+class Point1:
     MIN_COORD = 0
     MAX_COORD = 100
 
@@ -358,6 +358,32 @@ def df_sin(x):
 # df_sin = Derivate(df_sin)
 # print(df_sin(math.pi/3))
 
+#Ещё методы
+
+class Cat:
+    def __init__(self,name):
+        self.name=name
+
+    def __repr__(self): # вывод отладочной информации
+        return f"{self.__class__}:{self.name}"
+
+    def __str__(self):  #  вывод информации для пользователя
+        return f"{self.name}"
+
+cat = Cat('Кот')
+# print(cat)
+# str(cat)
+
+class Point:
+    def __init__(self, *args):
+        self.__coord = args
+
+
+    def __len__(self):
+        return len(self.__coords)
+
+    def __abs__(self):
+        return list(map(abs, self.__coords))
 
 
 
